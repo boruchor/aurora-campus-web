@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
 import { 
-  Home, Book, BookOpen, Research, 
+  Home, Book, BookOpen, Search, 
   User, Building, Calendar, Mail, 
   Menu, X, ChevronDown 
 } from "lucide-react";
@@ -49,7 +49,7 @@ const navItems: NavItem[] = [
   { 
     name: "Research", 
     href: "/research", 
-    icon: Research,
+    icon: Search,
     submenu: [
       { name: "Research Centers", href: "/research#centers" },
       { name: "Publications", href: "/research#publications" },
