@@ -7,6 +7,7 @@ import {
   Menu, X, ChevronDown 
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from 'react-router-dom';
 
 type NavItem = {
   name: string;
@@ -116,27 +117,27 @@ const Header = () => {
 
   return (
     <header className={cn(
-      "fixed w-full z-50 transition-all duration-300",
+      "sticky top-0 w-full z-50 transition-all duration-300",
       isScrolled 
-        ? "bg-white shadow-md py-2" 
+        ? "bg-white dark:bg-slate-900 shadow-md py-2" 
         : "bg-transparent py-4"
     )}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="/" className="flex items-center">
+          <Link to="/" className="flex items-center">
             <div className="text-2xl font-bold">
-              <span className="text-aurora-dark">Aurora</span>
-              <span className="text-aurora ml-1">University</span>
+              <span className="text-aurora-dark dark:text-aurora-light">Aurora</span>
+              <span className="text-aurora dark:text-aurora-light ml-1">University</span>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
               <div key={item.name} className="relative group">
-                <a 
-                  href={item.href}
+                <Link 
+                  to={item.href}
                   className="nav-link group flex items-center"
                   onClick={item.submenu ? (e) => {
                     e.preventDefault();
@@ -147,17 +148,17 @@ const Header = () => {
                   {item.submenu && (
                     <ChevronDown className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180" />
                   )}
-                </a>
+                </Link>
                 
                 {/* Submenu */}
                 {item.submenu && (
-                  <div className="absolute left-0 mt-2 w-60 bg-white rounded-md shadow-lg overflow-hidden z-20 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300">
+                  <div className="absolute left-0 mt-2 w-60 bg-white dark:bg-slate-800 rounded-md shadow-lg overflow-hidden z-20 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300">
                     <div className="py-2">
                       {item.submenu.map((subitem) => (
                         <a
                           key={subitem.name}
                           href={subitem.href}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-aurora-light hover:text-white transition-colors"
+                          className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-aurora-light hover:text-white transition-colors"
                         >
                           {subitem.name}
                         </a>
@@ -173,13 +174,13 @@ const Header = () => {
           <div className="hidden lg:flex items-center space-x-4">
             <Button 
               variant="outline"
-              className="border-aurora text-aurora hover:bg-aurora hover:text-white"
+              className="border-aurora text-aurora hover:bg-aurora hover:text-white dark:border-aurora-light dark:text-aurora-light dark:hover:bg-aurora-light dark:hover:text-black"
               >
               Visit
             </Button>
             <Button 
               variant="default"
-              className="bg-aurora hover:bg-aurora-dark"
+              className="bg-aurora hover:bg-aurora-dark dark:bg-aurora-light dark:text-black dark:hover:bg-white"
               >
               Apply Now
             </Button>
@@ -202,19 +203,19 @@ const Header = () => {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="lg:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 bg-white shadow-lg">
+          <div className="px-2 pt-2 pb-3 space-y-1 bg-white dark:bg-slate-800 shadow-lg">
             {navItems.map((item) => (
               <div key={item.name}>
                 <div 
-                  className="flex items-center justify-between px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100"
+                  className="flex items-center justify-between px-3 py-2 rounded-md text-base font-medium text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-slate-700"
                   onClick={item.submenu ? () => toggleSubmenu(item.name) : undefined}
                 >
-                  <a href={item.href}>
+                  <Link to={item.href}>
                     <div className="flex items-center">
                       {item.icon && <item.icon className="mr-3 h-5 w-5" />}
                       {item.name}
                     </div>
-                  </a>
+                  </Link>
                   {item.submenu && (
                     <ChevronDown 
                       className={cn(
@@ -232,7 +233,7 @@ const Header = () => {
                       <a
                         key={subitem.name}
                         href={subitem.href}
-                        className="block py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
+                        className="block py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md"
                       >
                         {subitem.name}
                       </a>
@@ -246,13 +247,13 @@ const Header = () => {
               <div className="flex items-center space-x-3 px-3">
                 <Button 
                   variant="outline"
-                  className="border-aurora text-aurora hover:bg-aurora hover:text-white w-1/2"
+                  className="border-aurora text-aurora hover:bg-aurora hover:text-white dark:border-aurora-light dark:text-aurora-light dark:hover:bg-aurora-light dark:hover:text-black w-1/2"
                   >
                   Visit
                 </Button>
                 <Button 
                   variant="default"
-                  className="bg-aurora hover:bg-aurora-dark w-1/2"
+                  className="bg-aurora hover:bg-aurora-dark dark:bg-aurora-light dark:text-black dark:hover:bg-white w-1/2"
                   >
                   Apply Now
                 </Button>

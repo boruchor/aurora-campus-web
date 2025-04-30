@@ -43,12 +43,82 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Aurora University Colors */
+    --aurora: 265 100% 60%;
+    --aurora-dark: 265 100% 40%;
+    --aurora-light: 265 100% 75%;
   }
 
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
-    /* ... keep existing code for dark mode */
+    
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    
+    /* Aurora University Colors in Dark Mode */
+    --aurora: 265 70% 75%;
+    --aurora-dark: 265 70% 60%;
+    --aurora-light: 265 70% 85%;
+  }
+
+  /* High contrast mode */
+  .high-contrast {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+    
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+    
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+    
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 80%;
+    
+    --accent: 0 0% 20%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 0 0% 40%;
+    --input: 0 0% 20%;
+    --ring: 0 0% 100%;
+    
+    /* Aurora University Colors in High Contrast Mode */
+    --aurora: 0 0% 100%;
+    --aurora-dark: 0 0% 80%;
+    --aurora-light: 0 0% 100%;
   }
 }
 
@@ -65,6 +135,56 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif font-medium;
   }
+  
+  /* Font size accessibility classes */
+  .text-normal {
+    font-size: 16px;
+  }
+  
+  .text-large {
+    font-size: 18px;
+  }
+  
+  .text-x-large {
+    font-size: 20px;
+  }
+  
+  /* Add utility classes for Aurora University colors */
+  .text-aurora {
+    color: hsl(var(--aurora));
+  }
+  
+  .text-aurora-dark {
+    color: hsl(var(--aurora-dark));
+  }
+  
+  .text-aurora-light {
+    color: hsl(var(--aurora-light));
+  }
+  
+  .bg-aurora {
+    background-color: hsl(var(--aurora));
+  }
+  
+  .bg-aurora-dark {
+    background-color: hsl(var(--aurora-dark));
+  }
+  
+  .bg-aurora-light {
+    background-color: hsl(var(--aurora-light));
+  }
+  
+  .border-aurora {
+    border-color: hsl(var(--aurora));
+  }
+  
+  .border-aurora-dark {
+    border-color: hsl(var(--aurora-dark));
+  }
+  
+  .border-aurora-light {
+    border-color: hsl(var(--aurora-light));
+  }
 }
 
 /* Aurora University Specific Styles */
@@ -77,12 +197,12 @@
 }
 
 .nav-link {
-  @apply relative text-gray-800 hover:text-indigo-900 transition-all duration-200;
+  @apply relative text-gray-800 dark:text-gray-200 hover:text-indigo-900 dark:hover:text-indigo-300 transition-all duration-200;
 }
 
 .nav-link::after {
   content: '';
-  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-700 transition-all duration-300 ease-in-out;
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-700 dark:bg-indigo-300 transition-all duration-300 ease-in-out;
 }
 
 .nav-link:hover::after {
@@ -90,11 +210,11 @@
 }
 
 .stat-card {
-  @apply bg-white rounded-lg shadow-md p-6 flex flex-col items-center justify-center text-center transition-all duration-300 hover:shadow-lg;
+  @apply bg-white dark:bg-slate-800 rounded-lg shadow-md p-6 flex flex-col items-center justify-center text-center transition-all duration-300 hover:shadow-lg;
 }
 
 .feature-card {
-  @apply overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white;
+  @apply overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white dark:bg-slate-800;
 }
 
 .research-card {
@@ -118,11 +238,11 @@
 }
 
 .event-card {
-  @apply bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300;
+  @apply bg-white dark:bg-slate-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300;
 }
 
 .event-date {
-  @apply bg-indigo-900 text-white text-center py-2 font-medium;
+  @apply bg-indigo-900 dark:bg-indigo-700 text-white text-center py-2 font-medium;
 }
 
 @keyframes fadeIn {
