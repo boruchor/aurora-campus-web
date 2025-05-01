@@ -15,7 +15,7 @@ const Index = () => {
   const { theme } = useTheme();
 
   return (
-    <div className={`min-h-screen ${theme === 'dark' ? 'dark' : 'light'}`}>
+    <div className={`min-h-screen ${theme}`}>
       <ParticlesBackground />
       <Header />
       <main>

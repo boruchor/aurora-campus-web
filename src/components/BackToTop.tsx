@@ -30,7 +30,7 @@ const BackToTop = () => {
     });
   };
 
-  // Use specific classes based on theme
+  // Define distinct styles for each theme
   const buttonClasses = theme === 'dark' 
     ? 'bg-aurora hover:bg-aurora-dark text-white' 
     : 'bg-aurora hover:bg-aurora-dark text-white';
