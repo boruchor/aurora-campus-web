@@ -20,13 +20,13 @@ const ParticlesBackground = () => {
         fpsLimit: 60,
         particles: {
           color: {
-            value: theme === 'dark' ? '#ffffff' : '#7952cf',
+            value: theme === 'dark' ? '#a78bfa' : '#7952cf',
           },
           links: {
-            color: theme === 'dark' ? '#ffffff' : '#7952cf',
+            color: theme === 'dark' ? '#a78bfa' : '#7952cf',
             distance: 150,
             enable: true,
-            opacity: 0.3,
+            opacity: theme === 'dark' ? 0.4 : 0.3,
             width: 1,
           },
           move: {
@@ -42,10 +42,10 @@ const ParticlesBackground = () => {
               enable: true,
               area: 800,
             },
-            value: 40,
+            value: theme === 'dark' ? 50 : 40,
           },
           opacity: {
-            value: 0.2,
+            value: theme === 'dark' ? 0.3 : 0.2,
           },
           shape: {
             type: "circle",
@@ -55,6 +55,11 @@ const ParticlesBackground = () => {
           },
         },
         detectRetina: true,
+        background: {
+          color: {
+            value: theme === 'dark' ? '#0f172a' : 'transparent',
+          },
+        },
       }}
     />
   );

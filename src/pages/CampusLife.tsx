@@ -9,16 +9,16 @@ import StudentStories from '@/components/campus-life/StudentStories';
 import VirtualCampusTour from '@/components/campus-life/VirtualCampusTour';
 import StudentTestimonialVideo from '@/components/campus-life/StudentTestimonialVideo';
 import BackToTop from '@/components/BackToTop';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 
 const CampusLife = () => {
   useEffect(() => {
-    // Initialize AOS
-    AOS.init({
-      duration: 1000,
-      once: false,
-    });
+    // Initialize animations when component mounts
+    if (typeof window !== 'undefined' && window.AOS) {
+      window.AOS.init({
+        duration: 1000,
+        once: false,
+      });
+    }
     
     // Scroll to top when the component mounts
     window.scrollTo(0, 0);

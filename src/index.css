@@ -128,7 +128,7 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground transition-colors duration-300;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
@@ -189,11 +189,11 @@
 
 /* Aurora University Specific Styles */
 .aurora-gradient {
-  @apply bg-gradient-to-r from-indigo-900 via-purple-800 to-indigo-900;
+  @apply bg-gradient-to-r from-indigo-900 via-purple-800 to-indigo-900 dark:from-indigo-800 dark:via-purple-700 dark:to-indigo-800;
 }
 
 .hero-overlay {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7));
+  @apply bg-gradient-to-b from-black/20 to-black/70 dark:from-black/30 dark:to-black/80;
 }
 
 .nav-link {
@@ -245,6 +245,7 @@
   @apply bg-indigo-900 dark:bg-indigo-700 text-white text-center py-2 font-medium;
 }
 
+/* Animation classes */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -271,4 +272,18 @@
   height: 2px;
   background-color: currentColor;
   animation: drawUnderline 0.6s ease-out 0.2s forwards;
+}
+
+/* Dark mode transition */
+.dark-transition {
+  @apply transition-colors duration-300 ease-in-out;
+}
+
+/* Glass morphism for dark mode */
+.dark .glass-card {
+  @apply bg-slate-800/80 backdrop-blur-md border border-slate-700/60;
+}
+
+.light .glass-card {
+  @apply bg-white/90 backdrop-blur-md border border-slate-200;
 }

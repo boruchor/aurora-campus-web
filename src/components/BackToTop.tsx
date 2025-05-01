@@ -41,7 +41,9 @@ const BackToTop = () => {
         >
           <Button
             className={`fixed bottom-8 right-8 z-50 rounded-full shadow-lg ${
-              theme === 'dark' ? 'bg-aurora hover:bg-aurora-dark' : 'bg-aurora hover:bg-aurora-dark'
+              theme === 'dark' 
+                ? 'bg-aurora text-white hover:bg-aurora-dark' 
+                : 'bg-aurora text-white hover:bg-aurora-dark'
             }`}
             onClick={scrollToTop}
             aria-label="Back to top"
