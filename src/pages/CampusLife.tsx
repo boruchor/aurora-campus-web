@@ -10,6 +10,16 @@ import VirtualCampusTour from '@/components/campus-life/VirtualCampusTour';
 import StudentTestimonialVideo from '@/components/campus-life/StudentTestimonialVideo';
 import BackToTop from '@/components/BackToTop';
 
+// Define the AOS global interface
+declare global {
+  interface Window {
+    AOS: {
+      init: (params: any) => void;
+      refresh: () => void;
+    };
+  }
+}
+
 const CampusLife = () => {
   useEffect(() => {
     // Initialize animations when component mounts

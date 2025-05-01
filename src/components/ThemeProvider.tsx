@@ -31,24 +31,26 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     setMounted(true);
     
-    // Initialize AOS
-    AOS.init({
-      duration: 1000,
-      once: false,
-      mirror: true,
-    });
+    // Initialize AOS only once on mount
+    if (typeof AOS !== 'undefined' && !mounted) {
+      AOS.init({
+        duration: 1000,
+        once: false,
+        mirror: true,
+      });
+    }
   }, []);
 
   useEffect(() => {
     if (!mounted) return;
     
-    // Apply theme to document
-    document.documentElement.classList.remove("light", "dark");
+    // Remove old theme classes before adding new one
+    document.documentElement.classList.remove("light", "dark", "high-contrast");
     document.documentElement.classList.add(theme);
     localStorage.setItem("theme", theme);
     
-    // Refresh AOS when theme changes
-    if (typeof window !== 'undefined' && AOS) {
+    // Refresh AOS when theme changes to reapply animations
+    if (typeof AOS !== 'undefined') {
       setTimeout(() => {
         AOS.refresh();
       }, 200);
@@ -56,7 +58,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, [theme, mounted]);
 
   const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+    setTheme(prevTheme => prevTheme === "light" ? "dark" : "light");
   };
 
   return (

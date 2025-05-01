@@ -1,11 +1,17 @@
 
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Particles from 'react-particles';
 import { loadSlim } from 'tsparticles-slim';
 import { useTheme } from '@/components/ThemeProvider';
 
 const ParticlesBackground = () => {
   const { theme } = useTheme();
+  const [particlesKey, setParticlesKey] = useState(0);
+  
+  // Force particles to re-render when theme changes
+  useEffect(() => {
+    setParticlesKey(prev => prev + 1);
+  }, [theme]);
   
   const particlesInit = useCallback(async (engine: any) => {
     await loadSlim(engine);
@@ -13,6 +19,7 @@ const ParticlesBackground = () => {
 
   return (
     <Particles
+      key={particlesKey}
       id="tsparticles"
       init={particlesInit}
       className="fixed inset-0 -z-10"

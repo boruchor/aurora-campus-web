@@ -30,6 +30,11 @@ const BackToTop = () => {
     });
   };
 
+  // Use specific classes based on theme
+  const buttonClasses = theme === 'dark' 
+    ? 'bg-aurora hover:bg-aurora-dark text-white' 
+    : 'bg-aurora hover:bg-aurora-dark text-white';
+
   return (
     <AnimatePresence>
       {isVisible && (
@@ -40,11 +45,7 @@ const BackToTop = () => {
           transition={{ duration: 0.3 }}
         >
           <Button
-            className={`fixed bottom-8 right-8 z-50 rounded-full shadow-lg ${
-              theme === 'dark' 
-                ? 'bg-aurora text-white hover:bg-aurora-dark' 
-                : 'bg-aurora text-white hover:bg-aurora-dark'
-            }`}
+            className={`fixed bottom-8 right-8 z-50 rounded-full shadow-lg ${buttonClasses}`}
             onClick={scrollToTop}
             aria-label="Back to top"
             size="icon"

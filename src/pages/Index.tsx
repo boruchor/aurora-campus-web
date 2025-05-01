@@ -9,12 +9,13 @@ import ResearchSection from '@/components/ResearchSection';
 import EventsSection from '@/components/EventsSection';
 import Footer from '@/components/Footer';
 import ParticlesBackground from '@/components/ParticlesBackground';
+import BackToTop from '@/components/BackToTop';
 
 const Index = () => {
   const { theme } = useTheme();
 
   return (
-    <div className="min-h-screen">
+    <div className={`min-h-screen ${theme === 'dark' ? 'dark' : 'light'}`}>
       <ParticlesBackground />
       <Header />
       <main>
@@ -25,6 +26,7 @@ const Index = () => {
         <EventsSection />
       </main>
       <Footer />
+      <BackToTop />
     </div>
   );
 };
