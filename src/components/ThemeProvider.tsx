@@ -19,7 +19,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     
     // Check for saved theme or system preference
     const savedTheme = localStorage.getItem("theme") as Theme;
-    if (savedTheme) return savedTheme;
+    if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark')) return savedTheme;
     
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     return prefersDark ? "dark" : "light";
@@ -30,15 +30,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   // Handle hydration mismatch
   useEffect(() => {
     setMounted(true);
-    
-    // Initialize AOS only once on mount
-    if (typeof AOS !== 'undefined' && !mounted) {
-      AOS.init({
-        duration: 1000,
-        once: false,
-        mirror: true,
-      });
-    }
   }, []);
 
   useEffect(() => {
